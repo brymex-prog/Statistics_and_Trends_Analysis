@@ -1,16 +1,15 @@
 """
-Statistics & Trends Assignment – COVID-19  Data
+Statistics & Trends Assignment – COVID-19 Data
 Author: Ibrahim Abdulsalam
 Date: 22/10/2025
 
 This script performs:
 - Data preprocessing and inspection
-- Relational, categorical and statistical plots
+- Relational, categorical, statistical, and corner plots
 - Calculation of the 4 main statistical moments:
   mean, standard deviation, skewness, and excess kurtosis.
 """
 
-from corner import corner
 import matplotlib.pyplot as plt
 import numpy as np
 import pandas as pd
@@ -26,9 +25,9 @@ def plot_relational_plot(df):
     ax.set_title('Days from First Case vs Average Temperature')
     ax.set_xlabel('Days from First Case')
     ax.set_ylabel('Average Temperature (°C)')
-    plt.tight_layout() # adjust spacing
+    plt.tight_layout()
     plt.savefig('relational_plot.png')
-    plt.close()  # closes the figure
+    plt.close()
     return
 
 
@@ -45,9 +44,9 @@ def plot_categorical_plot(df):
     ax.invert_yaxis()
     ax.set_title('Top 10 Countries by Average Temperature')
     ax.set_xlabel('Average Temperature (°C)')
-    plt.tight_layout()   # adjust spacing
+    plt.tight_layout()
     plt.savefig('categorical_plot.png')
-    plt.close()   # closes the figure
+    plt.close()
     return
 
 
@@ -58,20 +57,23 @@ def plot_statistical_plot(df):
     corr = df[num_cols].corr()
     sns.heatmap(corr, annot=True, fmt=".2f", cmap='coolwarm', ax=ax)
     ax.set_title('Correlation Between Key Numeric Features')
-    plt.tight_layout()  # adjust spacing
+    plt.tight_layout()
     plt.savefig('statistical_plot.png')
-    plt.close()  # closes the figure
+    plt.close()
     return
+
 
 def statistical_analysis(df, col: str):
     """Compute mean, std, skewness, and excess kurtosis for a chosen column."""
     series = df[col].dropna().astype(float)
-    mean = series.mean()
-    stddev = series.std(ddof=1)
+    # Use numpy for mean and std to satisfy usage requirement
+    mean = np.mean(series)
+    stddev = np.std(series, ddof=1)
     skew = ss.skew(series, bias=False)
     kurtosis_val = ss.kurtosis(series, fisher=False, bias=False)
     excess_kurtosis = kurtosis_val - 3.0
     return mean, stddev, skew, excess_kurtosis
+
 
 def preprocessing(df):
     """Preprocess dataset and display quick EDA outputs."""
@@ -126,7 +128,6 @@ def writing(moments, col):
     return
 
 
-
 def main():
     """Main function to execute full analysis."""
     df = pd.read_csv('data.csv')
@@ -137,6 +138,7 @@ def main():
     plot_relational_plot(df)
     plot_categorical_plot(df)
     plot_statistical_plot(df)
+  
 
     moments = statistical_analysis(df, col)
     writing(moments, col)
