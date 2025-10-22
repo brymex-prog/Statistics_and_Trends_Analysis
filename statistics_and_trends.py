@@ -28,7 +28,7 @@ def plot_relational_plot(df):
     ax.set_ylabel('Average Temperature (°C)')
     plt.tight_layout() # adjust spacing
     plt.savefig('relational_plot.png')
-    plt.close()  #closes the figure
+    plt.close()  # closes the figure
     return
 
 
@@ -45,9 +45,9 @@ def plot_categorical_plot(df):
     ax.invert_yaxis()
     ax.set_title('Top 10 Countries by Average Temperature')
     ax.set_xlabel('Average Temperature (°C)')
-    plt.tight_layout()   #adjust spacing
+    plt.tight_layout()   # adjust spacing
     plt.savefig('categorical_plot.png')
-    plt.close()   #closes the figure
+    plt.close()   # closes the figure
     return
 
 
@@ -58,9 +58,9 @@ def plot_statistical_plot(df):
     corr = df[num_cols].corr()
     sns.heatmap(corr, annot=True, fmt=".2f", cmap='coolwarm', ax=ax)
     ax.set_title('Correlation Between Key Numeric Features')
-    plt.tight_layout()  #adjust spacing
+    plt.tight_layout()  # adjust spacing
     plt.savefig('statistical_plot.png')
-    plt.close()  #closes the figure
+    plt.close()  # closes the figure
     return
 
 def statistical_analysis(df, col: str):
