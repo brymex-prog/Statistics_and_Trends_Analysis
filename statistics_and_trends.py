@@ -9,13 +9,6 @@ This script performs:
 - Calculation of the 4 main statistical moments:
   mean, standard deviation, skewness, and excess kurtosis.
 """
-df = pd.read_csv('data.csv')
-def preprocessing(df):
-    print(df.info())
-    print(df.describe())
-    print(df.head())
-    df = df.dropna()  # remove missing values if any
-    return df
 
 from corner import corner
 import matplotlib.pyplot as plt
