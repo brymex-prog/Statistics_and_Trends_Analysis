@@ -139,7 +139,6 @@ def main():
     plot_categorical_plot(df)
     plot_statistical_plot(df)
   
-
     moments = statistical_analysis(df, col)
     writing(moments, col)
     return
