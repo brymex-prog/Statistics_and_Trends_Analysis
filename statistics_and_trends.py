@@ -26,7 +26,7 @@ def plot_relational_plot(df):
     ax.set_title('Days from First Case vs Average Temperature')
     ax.set_xlabel('Days from First Case')
     ax.set_ylabel('Average Temperature (°C)')
-    plt.tight_layout() #adjust spacing
+    plt.tight_layout() # adjust spacing
     plt.savefig('relational_plot.png')
     plt.close()  #closes the figure
     return
@@ -49,7 +49,6 @@ def plot_categorical_plot(df):
     plt.savefig('categorical_plot.png')
     plt.close()   #closes the figure
     return
-
 
 
 def plot_statistical_plot(df):
