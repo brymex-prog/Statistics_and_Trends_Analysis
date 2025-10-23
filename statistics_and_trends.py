@@ -1,6 +1,7 @@
 """
 Statistics & Trends Assignment – COVID-19 Data
-Author: Ibrahim Abdulsalam
+Name: Ibrahim Abdulsalam
+Student Number:24127116
 Date: 22/10/2025
 
 This script performs:
